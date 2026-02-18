@@ -1,4 +1,4 @@
-export const renderRingleShowDetails = (tvShow) => {
+export const renderSingleShowDetails = (tvShow) => {
   const showDetails = document.querySelector('#show-details');
   showDetails.classList.remove('hidden');
 
