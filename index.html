@@ -8,6 +8,26 @@
   </head>
   <body>
 
+    <!-- Modal Section: single item details-->
+    <section id="show-details" class="hidden">
+      <button id="show-close-details">X</button>
+      <!-- This will facilitate the layout later on -->
+      <div id="info-content">
+        <figure>
+          <img src="" alt="" id="show-image">
+          <figcaption id="show-title"></figcaption>
+        </figure>
+        <div id="show-info">
+          <p><strong>Streamed On:</strong> <span id="show-streamed"></span></p>
+          <p><strong>Rating:</strong> <span id="show-rating"></span> / 10</p>
+          <p><strong>Seasons:</strong> <span id="show-seasons"></span></p>
+          <p><strong>Total Episodes:</strong> <span id="show-episodes"></span></p>
+          <p><strong>Genres:</strong> <span id="show-genres"></span></p>
+          <p><strong>Status:</strong> <span id="show-status"></span></p>
+        </div>
+      </div>
+      <p id="show-summary"></p>
+    </section>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
