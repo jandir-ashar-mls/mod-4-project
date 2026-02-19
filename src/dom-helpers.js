@@ -1,3 +1,28 @@
+export const renderShowsCollection = (shows) => {
+  const showsList = document.querySelector('#shows-list')
+  showsList.innerHTML = ''
+
+  shows.forEach(show => {
+    const li = document.createElement('li')
+    li.dataset.id = show.id
+    li.classList.add('show-card')
+
+    li.innerHTML = `
+      <img src="${show.image?.medium || ''}" alt="${show.name}" />
+      <h3>${show.name}</h3>
+      <p>⭐ ${show.rating?.average ?? 'N/A'}</p>
+    `
+
+    showsList.appendChild(li)
+  })
+}
+
+
+
+
+
+
+
 export const renderSingleShowDetails = (tvShow) => {
   const showDetails = document.querySelector('#show-details');
   showDetails.classList.remove('hidden');
