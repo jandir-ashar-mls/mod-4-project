@@ -43,3 +43,26 @@ export const getShowById = async (tvShowId) => {
     return { data: null, error: error};
   }
 };
+
+export const searchShows = async (query) => {
+  try {
+    const response = await fetch(
+      `https://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`
+    )
+    if (!response.ok){
+      throw new Error(`Search failed: ${response.status}`)
+    }
+    const data = await response.json()
+
+    const results = data.map(result => ({
+      id: result.show.id,
+      name: result.show.name,
+      image: result.show.image,
+      rating: result.show.rating
+    }))
+    return { data: results, error: null }
+  } catch (error) {
+    console.warn('Error searching for shows:', error.message)
+    return { data: null, error }
+  }
+}

@@ -1,5 +1,5 @@
 import { renderShowsCollection, renderSingleShowDetails } from './dom-helpers';
-import { getAllShows, getShowById } from './fetch-helpers';
+import { getAllShows, getShowById, searchShows } from './fetch-helpers';
 
 let allShows = []
 
@@ -22,19 +22,17 @@ const loadShows = async () => {
 
 loadShows()
 
-searchForm.addEventListener('submit', (event) => {
+searchForm.addEventListener('submit', async (event) => {
   event.preventDefault()
-  const searchTerm = searchInput.value.trim().toLowerCase()
-  if (!searchTerm){
-    renderShowsCollection(allShows)
-    searchForm.reset()
+  const searchTerm = searchInput.value.trim()
+  if (!searchTerm) return;
+  const { data, error } = await searchShows(searchTerm)
+  
+  if (error) {
+    console.error('Search Failed')
     return
   }
-  const filteredShows = allShows.filter(show =>
-    show.name.toLowerCase().includes(searchTerm)
-  )
-  renderShowsCollection(filteredShows)
-
+  renderShowsCollection(data)
   searchForm.reset()
 })
 
