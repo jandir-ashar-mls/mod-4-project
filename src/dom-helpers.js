@@ -7,12 +7,17 @@ export const renderShowsCollection = (shows) => {
     li.dataset.id = show.id
     li.classList.add('show-card')
 
-    li.innerHTML = `
-      <img src="${show.image?.medium || ''}" alt="${show.name}" />
-      <h3>${show.name}</h3>
-      <p>⭐ ${show.rating?.average ?? 'N/A'}</p>
-    `
+    const img = document.createElement('img')
+    img.src = show.image?.medium || ''
+    img.alt = show.name
 
+    const title = document.createElement('h3')
+    title.textContent = show.name
+
+    const rating = document.createElement('p')
+    rating.textContent = `⭐️ ${show.rating?.average ?? 'N/A'}`
+
+    li.append(img, title, rating)
     showsList.appendChild(li)
   })
 }
