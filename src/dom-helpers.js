@@ -1,3 +1,33 @@
+export const renderShowsCollection = (shows) => {
+  const showsList = document.querySelector('#shows-list')
+  showsList.innerHTML = ''
+
+  shows.forEach(show => {
+    const li = document.createElement('li')
+    li.dataset.id = show.id
+    li.classList.add('show-card')
+
+    const img = document.createElement('img')
+    img.src = show.image?.medium || ''
+    img.alt = show.name
+
+    const title = document.createElement('h3')
+    title.textContent = show.name
+
+    const rating = document.createElement('p')
+    rating.textContent = `⭐️ ${show.rating?.average ?? 'N/A'}`
+
+    li.append(img, title, rating)
+    showsList.appendChild(li)
+  })
+}
+
+
+
+
+
+
+
 export const renderSingleShowDetails = (tvShow) => {
   const showDetails = document.querySelector('#show-details');
   showDetails.classList.remove('hidden');
