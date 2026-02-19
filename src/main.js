@@ -4,9 +4,9 @@ import { getAllShows, getShowById } from './fetch-helpers';
 let allShows = []
 
 const searchForm = document.querySelector('#search-form')
-const searchInput = document.querySelector('search-input')
+const searchInput = document.querySelector('#search-input')
 
-const showsList = document.querySelector('ul');
+const showsList = document.querySelector('#shows-list');
 const closeButton = document.querySelector('#show-close-details');
 const showDetails = document.querySelector('#show-details');
 
@@ -35,7 +35,7 @@ searchForm.addEventListener('submit', (event) => {
   )
   renderShowsCollection(filteredShows)
 
-  searchForm.reset
+  searchForm.reset()
 })
 
 showsList.addEventListener('click', (event) => {
