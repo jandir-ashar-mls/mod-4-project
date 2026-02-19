@@ -1,3 +1,20 @@
+export const getAllShows = async () => {
+  try {
+    const response = await fetch('https://api.tvmaze.com/shows')
+
+    if (!response.ok){
+      throw new Error('Failed to load TV Shows: ${response.status} ${response.statusText}')
+    }
+    const data = await response.json()
+    return { data, error: null }
+  } catch (error) {
+    console.warn('An error occured while trying to retrieve TV Shows:', error.message)
+    return { data: null, error }
+  }
+}
+
+
+
 export const getShowById = async (tvShowId) => {
   try {
     const [showResponse, episodesResponse] = await Promise.all([fetch(`https://api.tvmaze.com/shows/${tvShowId}`), fetch(`https://api.tvmaze.com/shows/${tvShowId}/episodes`)]);
