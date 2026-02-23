@@ -1,3 +1,40 @@
+export const renderShowsCollection = (shows) => {
+  const ul = document.querySelector('#shows-list')
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild)
+  }
+
+  shows.forEach(item => {
+    const show = item.show ? item.show : item
+
+    const li = document.createElement('li')
+    li.dataset.id = show.id
+
+    if (show.image && show.image.medium) {
+      const img = document.createElement('img')
+      img.src = show.image.medium
+      img.alt = show.name
+      li.appendChild(img)
+    }
+
+    const title = document.createElement('h3')
+    title.textContent = show.name || 'Untitled'
+    li.appendChild(title)
+
+    const rating = document.createElement('p')
+    rating.textContent = `⭐️ ${show.rating?.average ?? 'N/A'}`
+    li.appendChild(rating)
+
+    ul.appendChild(li)
+  })
+}
+
+
+
+
+
+
+
 export const renderSingleShowDetails = (tvShow) => {
   const showDetails = document.querySelector('#show-details');
   showDetails.classList.remove('hidden');
