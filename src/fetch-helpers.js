@@ -52,15 +52,9 @@ export const searchShows = async (query) => {
     if (!response.ok){
       throw new Error(`Search failed: ${response.status}`)
     }
+    
     const data = await response.json()
-
-    const results = data.map(result => ({
-      id: result.show.id,
-      name: result.show.name,
-      image: result.show.image,
-      rating: result.show.rating
-    }))
-    return { data: results, error: null }
+    return { data, error: null }
   } catch (error) {
     console.warn('Error searching for shows:', error.message)
     return { data: null, error }

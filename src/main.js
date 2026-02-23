@@ -1,7 +1,6 @@
 import { renderShowsCollection, renderSingleShowDetails } from './dom-helpers';
 import { getAllShows, getShowById, searchShows } from './fetch-helpers';
 
-let allShows = []
 
 const searchForm = document.querySelector('#search-form')
 const searchInput = document.querySelector('#search-input')
@@ -16,7 +15,6 @@ const loadShows = async () => {
   if (error){
     return;
   }
-  allShows = data
   renderShowsCollection(data)
 }
 
@@ -24,14 +22,11 @@ loadShows()
 
 searchForm.addEventListener('submit', async (event) => {
   event.preventDefault()
-  const searchTerm = searchInput.value.trim()
-  if (!searchTerm) return;
+  const searchTerm = searchInput.value.trim().toLowerCase()
   const { data, error } = await searchShows(searchTerm)
   
-  if (error) {
-    console.error('Search Failed')
-    return
-  }
+  if (error) return;
+
   renderShowsCollection(data)
   searchForm.reset()
 })
