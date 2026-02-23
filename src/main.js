@@ -1,7 +1,7 @@
 import { renderShowsCollection, renderSingleShowDetails } from './dom-helpers';
 import { getAllShows, getShowById } from './fetch-helpers';
 
-const showsList = document.querySelector('ul');
+const showsList = document.querySelector('#shows-list');
 const closeButton = document.querySelector('#show-close-details');
 const showDetails = document.querySelector('#show-details');
 
