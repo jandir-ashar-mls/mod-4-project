@@ -8,7 +8,7 @@ const showDetails = document.querySelector('#show-details');
 showsList.addEventListener('click', async (event) => {
   const clickedLi = event.target.closest('li');
   if (!clickedLi) return;
-
+  showDetails.showModal();
   const tvShowId = clickedLi.dataset.id;
 
   const { data, error } = await getShowById(tvShowId);
@@ -21,7 +21,7 @@ showsList.addEventListener('click', async (event) => {
 
 // Hide modal/details when user clicks on the button
 closeButton.addEventListener('click', () => {
-  showDetails.classList.add('hidden');
+  showDetails.close();
 });
 
-
+showDetails.showModal();

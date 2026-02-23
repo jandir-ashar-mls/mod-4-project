@@ -12,11 +12,10 @@
       <h1>Episodic</h1>
       <ul id="shows-list"></ul>
     </section>
-
     <!-- Modal Section: single item details-->
-    <section id="show-details" class="hidden">
+    <dialog id="show-details">
       <div id="show-content">
-        <div id="show-close-details-wrapper"><button id="show-close-details">X</button></div>
+        <div id="show-close-details-wrapper"><button id="show-close-details" aria-label="close modal"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button></div>
         <!-- This will facilitate the layout later on -->
         <div id="info-content">
           <figure id="image-content">
@@ -34,7 +33,7 @@
         </div>
         <p id="show-summary"></p>
       </div>
-    </section>
+    </dialog>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
