@@ -24,10 +24,6 @@ export const renderShowsCollection = (shows) => {
 
 
 
-
-
-
-
 export const renderSingleShowDetails = (tvShow) => {
   const showDetails = document.querySelector('#show-details');
   showDetails.classList.remove('hidden');
@@ -52,4 +48,23 @@ export const renderSingleShowDetails = (tvShow) => {
   showGenres.textContent = tvShow.genres;
   showStatus.textContent = tvShow.status;
   showSummary.textContent = tvShow.summary;
+}
+
+export const renderTopPick = (shows) => {
+  const topPickImage = document.querySelector('#top-pick-image');
+const topPickTitle = document.querySelector('#top-pick-title')
+const topPickRating = document.querySelector('#top-pick-rating')
+  const topRated = shows.filter(
+    show => show.rating?.average >= 8.5
+  )
+
+  if (topRated.length === 0) return;
+
+  const randomIndex = Math.floor(Math.random() * topRated.length)
+  const show = topRated[randomIndex]
+
+  topPickImage.src = show.image?.medium || ''
+  topPickImage.alt = show.name
+  topPickTitle.textContent = show.name
+  topPickRating.textContent = `⭐ ${show.rating.average}`
 }

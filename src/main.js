@@ -1,20 +1,28 @@
-import { renderShowsCollection, renderSingleShowDetails } from './dom-helpers';
+import { renderShowsCollection, renderSingleShowDetails, renderTopPick } from './dom-helpers';
 import { getAllShows, getShowById } from './fetch-helpers';
 
 const showsList = document.querySelector('#shows-list');
 const closeButton = document.querySelector('#show-close-details');
 const showDetails = document.querySelector('#show-details');
+const refreshPickButton = document.querySelector('#refresh-pick')
+
+
 
 const loadShows = async () => {
   const { data, error } = await getAllShows()
+  if (error) return;
 
-  if (error){
-    return;
-  }
   renderShowsCollection(data)
+  renderTopPick(data)
 }
 
 loadShows()
+
+refreshPickButton.addEventListener('click', async () => {
+  const { data, error } = await getAllShows()
+  if (error) return
+  renderTopPick(data)
+})
 
 showsList.addEventListener('click', (event) => {
   const clickedLi = event.target.closest('li');
