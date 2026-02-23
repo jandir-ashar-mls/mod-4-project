@@ -1,7 +1,6 @@
 import { renderShowsCollection, renderSingleShowDetails } from './dom-helpers';
 import { getAllShows, getShowById, searchShows } from './fetch-helpers';
 
-
 const searchForm = document.querySelector('#search-form')
 const searchInput = document.querySelector('#search-input')
 
