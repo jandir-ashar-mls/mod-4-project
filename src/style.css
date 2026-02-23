@@ -25,15 +25,25 @@ body {
 }
 
 /* MODAL */
+html {
+  scrollbar-gutter: stable;
+}
+
+html:has(#show-details[open]) {
+  overflow: hidden;
+}
+
 #show-details {
   border: none;
   padding: 0;
   border-radius: 4px;
   margin: auto;
+  max-width: 600px;
 }
 
 #show-details::backdrop {
   background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
 }
 
 #show-content {
@@ -58,6 +68,10 @@ body {
   border-radius: 4px;
   background-color: rgb(153, 210, 229);
   border: 1px solid transparent;
+}
+
+#show-close-details:focus {
+  outline: none;
 }
 
 #info-content {

@@ -4,6 +4,7 @@ import { getShowById } from './fetch-helpers';
 const showsList = document.querySelector('ul');
 const closeButton = document.querySelector('#show-close-details');
 const showDetails = document.querySelector('#show-details');
+const showContent = document.querySelector('#show-content');
 
 showsList.addEventListener('click', async (event) => {
   const clickedLi = event.target.closest('li');
@@ -12,7 +13,7 @@ showsList.addEventListener('click', async (event) => {
   const tvShowId = clickedLi.dataset.id;
 
   const { data, error } = await getShowById(tvShowId);
-  
+
   if (error) {
     return;
   }
@@ -24,4 +25,8 @@ closeButton.addEventListener('click', () => {
   showDetails.close();
 });
 
-showDetails.showModal();
+showDetails.addEventListener('click', (event) => {
+  if(!showContent.contains(event.target)) {
+    showDetails.close();
+  }
+});
