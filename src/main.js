@@ -1,7 +1,11 @@
 import { renderShowsCollection, renderSingleShowDetails } from './dom-helpers';
-import { getAllShows, getShowById } from './fetch-helpers';
+import { getAllShows, getShowById, searchShows } from './fetch-helpers';
 
-const showsList = document.querySelector('ul');
+
+const searchForm = document.querySelector('#search-form')
+const searchInput = document.querySelector('#search-input')
+
+const showsList = document.querySelector('#shows-list');
 const closeButton = document.querySelector('#show-close-details');
 const showDetails = document.querySelector('#show-details');
 
@@ -15,6 +19,17 @@ const loadShows = async () => {
 }
 
 loadShows()
+
+searchForm.addEventListener('submit', async (event) => {
+  event.preventDefault()
+  const searchTerm = searchInput.value.trim().toLowerCase()
+  const { data, error } = await searchShows(searchTerm)
+  
+  if (error) return;
+
+  renderShowsCollection(data)
+  searchForm.reset()
+})
 
 showsList.addEventListener('click', (event) => {
   const clickedLi = event.target.closest('li');
