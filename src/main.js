@@ -7,6 +7,7 @@ const searchInput = document.querySelector('#search-input')
 const showsList = document.querySelector('#shows-list');
 const closeButton = document.querySelector('#show-close-details');
 const showDetails = document.querySelector('#show-details');
+const showContent = document.querySelector('#show-content');
 
 const loadShows = async () => {
   const { data, error } = await getAllShows()
@@ -30,14 +31,14 @@ searchForm.addEventListener('submit', async (event) => {
   searchForm.reset()
 })
 
-showsList.addEventListener('click', (event) => {
+showsList.addEventListener('click', async (event) => {
   const clickedLi = event.target.closest('li');
   if (!clickedLi) return;
-
+  showDetails.showModal();
   const tvShowId = clickedLi.dataset.id;
 
-  const { data, error } = getShowById(tvShowId);
-  
+  const { data, error } = await getShowById(tvShowId);
+
   if (error) {
     return;
   }
@@ -46,5 +47,11 @@ showsList.addEventListener('click', (event) => {
 
 // Hide modal/details when user clicks on the button
 closeButton.addEventListener('click', () => {
-  showDetails.classList.add('hidden');
+  showDetails.close();
+});
+
+showDetails.addEventListener('click', (event) => {
+  if(!showContent.contains(event.target)) {
+    showDetails.close();
+  }
 });
