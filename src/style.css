@@ -17,6 +17,19 @@ body {
   margin: 0 auto;
 }
 
+.site-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
+.logo {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -279,6 +292,12 @@ input {
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 1rem;
     justify-items: center;
+}
+
+@media (max-width: 480px) {
+  .logo {
+    max-width: 240px;
+  }
 }
 
 @media (min-width: 480px) {
