@@ -13,6 +13,7 @@ body {
   color: var(--text-color);
   font-family: var(--font-family);
   padding: 1rem;
+  line-height: 1.5;
 }
 
 * {
@@ -64,11 +65,13 @@ html:has(#show-details[open]) {
   box-shadow: 0 2px 4px var(--shadow-color);
   padding: 20px;
   overflow: auto;
+  color: var(--text-color);
 }
 
 #show-close-details-wrapper {
   display: flex;
   justify-content: flex-end;
+  gap: 1rem;
   margin-bottom: 10px;
 }
 
@@ -80,7 +83,7 @@ html:has(#show-details[open]) {
   border: 1px solid transparent;
 }
 
-#show-close-details:focus {
+#show-close-details:focus, .favorite-btn:focus {
   outline: none;
 }
 
@@ -97,6 +100,7 @@ html:has(#show-details[open]) {
   display: flex;
   flex-direction: column;
   max-width: 250px;
+  gap: .5rem;
 }
 
 #show-image {
@@ -325,6 +329,10 @@ input {
 .favorite-btn[data-favorited="true"] {
   color: gold;
   background-color: rbga(255, 215, 0, 0,14);
+}
+#favorite-btn-wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes fadeIn {

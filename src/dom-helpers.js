@@ -10,6 +10,8 @@ export const renderShowsCollection = (shows) => {
 
   shows.forEach(item => {
     const show = item.show ? item.show : item
+    if(!show.image?.original || !show.image?.medium) return;
+
     const isFavorite = favorites.some((favorite) => favorite.id === show.id);
     const li = document.createElement('li')
     li.dataset.id = show.id
@@ -21,7 +23,7 @@ export const renderShowsCollection = (shows) => {
 
     if (show.image && show.image.original) {
       const img = document.createElement('img')
-      img.src = show.image.original
+      img.src = show.image.original || show.image.medium;
       img.alt = show.name
       li.appendChild(img)
     }

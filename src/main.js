@@ -1,4 +1,4 @@
-import { getFavorites, toggleFavorite, renderShowsCollection, renderSingleShowDetails, renderTopPick } from './dom-helpers';
+import { getFavorites, toggleFavorite, renderShowsCollection, renderSingleShowDetails, renderTopPick, renderFavorites } from './dom-helpers';
 import { getAllShows, getShowById, searchShows } from './fetch-helpers';
 
 const searchForm = document.querySelector('#search-form')
@@ -67,7 +67,7 @@ showsList.addEventListener('click', async (event) => {
   const favoriteBtn = event.target.closest('.favorite-btn');
   if (favoriteBtn) {
     const li = favoriteBtn.closest('li');
-    const showId = li.dataset.id;
+    const showId = Number(li.dataset.id);
     const show = currentShows.map((s) => s.show ?? s).find(s => s.id === showId)
       || getFavorites().find(s => s.id === showId);
     if (!show) return;
@@ -104,27 +104,25 @@ showDetails.addEventListener('click', (event) => {
 });
 
 favoritesButton.addEventListener('click', () => {
-  const isViewingFavorites = !viewingFavorites;
-  currentShows = viewingFavorites ? getFavorites() : cachedShows;
-  if (isViewingFavorites) {
-    renderShowsCollection(cachedShows);
-    favoritesButton.dataset.view = 'all';
+  viewingFavorites = !viewingFavorites;
+  if (viewingFavorites) {
+    currentShows = getFavorites();
+    renderShowsCollection(currentShows);
   } else {
-    renderShowsCollection(getFavorites());
-    favoritesButton.dataset.view = 'favorites';
+    currentShows = cachedShows;
+    renderFavorites();
   }
 });
-
-
 
 showFavoriteBtn.addEventListener('click', () => {
   const isFavorited = showFavoriteBtn.dataset.favorited === 'true';
   const showId = Number(showDetails.dataset.currentId);
-  const show = cachedShows.find((show) => show.id === showId) || getFavorites().find((fav) => fav.id === showId);
+  const show = currentShows.map((show) => show.show ?? show).find((show) => show.id === showId)
+    || getFavorites().find((show)=> show.id === showId);
   if (!show) return;
 
   toggleFavorite(show);
   showFavoriteBtn.dataset.favorited = !isFavorited;
-  const isViewingFavorites = favoritesButton.dataset.view === 'favorites';
-  renderShowsCollection(isViewingFavorites ? getFavorites() : cachedShows);
+
+  viewingFavorites ? renderFavorites() : renderShowsCollection(currentShows);
 });
