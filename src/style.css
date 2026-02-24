@@ -237,6 +237,9 @@ html:has(#show-details[open]) {
   outline: 2px solid var(--muted);
   outline-offset: 2px;
 }
+#favorites-btn {
+  margin-top: 1rem;
+}
 
 .form-group{
     flex: 1;
@@ -308,6 +311,20 @@ input {
   padding-top: 1rem;
   border-top: 1px solid var(--surface);
   text-align: center;
+}
+
+.favorite-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: grey;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.favorite-btn[data-favorited="true"] {
+  color: gold;
+  background-color: rbga(255, 215, 0, 0,14);
 }
 
 @keyframes fadeIn {

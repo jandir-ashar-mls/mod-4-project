@@ -36,6 +36,7 @@ export const getShowById = async (tvShowId) => {
     const imageSrc = await preloadImage(showData.image.original);
     // save all data in an object
     const showObj = {
+      id: showData.id,
       image: imageSrc,
       title: showData.name,
       network: showData.network?.name || showData.webChannel?.name || 'N/A',
