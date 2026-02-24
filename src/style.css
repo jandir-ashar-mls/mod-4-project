@@ -21,6 +21,7 @@ body {
   box-sizing: border-box;
 }
 
+
 ul, li {
   text-decoration: none;
 }
@@ -51,6 +52,10 @@ html:has(#show-details[open]) {
   backdrop-filter: blur(2px);
 }
 
+#show-details[open] {
+  animation: fadeIn 350ms ease-in-out;
+}
+
 #show-content {
   display: flex;
   flex-direction: column;
@@ -71,7 +76,7 @@ html:has(#show-details[open]) {
   padding: .2rem 0.5rem;
   cursor: pointer;
   border-radius: 4px;
-  background-color: rgb(153, 210, 229);
+  background-color: var(--accent-color);
   border: 1px solid transparent;
 }
 
@@ -99,6 +104,7 @@ html:has(#show-details[open]) {
   height: auto;
   object-fit: cover;
   border-radius: 4px;
+  background-color: #2a2a2a;
 }
 
 #show-title {
@@ -204,4 +210,13 @@ html:has(#show-details[open]) {
     margin-top: 0.5rem;
     font-size: 0.9rem;
     text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

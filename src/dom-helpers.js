@@ -29,16 +29,7 @@ export const renderShowsCollection = (shows) => {
   })
 }
 
-
-
-
-
-
-
 export const renderSingleShowDetails = (tvShow) => {
-  const showDetails = document.querySelector('#show-details');
-  showDetails.classList.remove('hidden');
-
   const showImage = document.querySelector('#show-image');
   const showTitle = document.querySelector('#show-title');
   const showStreamed = document.querySelector('#show-streamed');
@@ -51,12 +42,12 @@ export const renderSingleShowDetails = (tvShow) => {
 
   showImage.src = tvShow.image;
   showImage.alt = tvShow.title;
-  showTitle.textContent = tvShow.name;
+  showTitle.textContent = tvShow.title;
   showStreamed.textContent = tvShow.network;
   showRating.textContent = tvShow.rating;
   showSeasons.textContent = tvShow.seasons;
   showEpisodes.textContent = tvShow.episodes;
   showGenres.textContent = tvShow.genres;
   showStatus.textContent = tvShow.status;
-  showSummary.textContent = tvShow.summary;
-}
+  showSummary.innerHTML = tvShow.summary;
+};

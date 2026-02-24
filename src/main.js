@@ -34,15 +34,15 @@ searchForm.addEventListener('submit', async (event) => {
 showsList.addEventListener('click', async (event) => {
   const clickedLi = event.target.closest('li');
   if (!clickedLi) return;
-  showDetails.showModal();
   const tvShowId = clickedLi.dataset.id;
 
   const { data, error } = await getShowById(tvShowId);
-
   if (error) {
+    showDetails.close();
     return;
   }
   renderSingleShowDetails(data);
+  showDetails.showModal();
 });
 
 // Hide modal/details when user clicks on the button
