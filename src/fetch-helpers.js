@@ -3,7 +3,7 @@ export const getAllShows = async () => {
     const response = await fetch('https://api.tvmaze.com/shows')
 
     if (!response.ok){
-      throw new Error('Failed to load TV Shows: ${response.status} ${response.statusText}')
+      throw new Error(`Failed to load TV Shows: ${response.status} ${response.statusText}`)
     }
     const data = await response.json()
     return { data, error: null }
@@ -13,7 +13,14 @@ export const getAllShows = async () => {
   }
 }
 
-
+const preloadImage = (src) => {
+    return new Promise((resolve) => {
+    const image = new Image();
+    image.onload = () => resolve(src);
+    image.onerror = () => resolve('./img/loading-image.png');
+    image.src = src;
+    });
+};
 
 export const getShowById = async (tvShowId) => {
   try {
@@ -23,19 +30,23 @@ export const getShowById = async (tvShowId) => {
 
     const [ showData, episodesData ] = await Promise.all([showResponse.json(),episodesResponse.json()]);
     // Extract seasons and episodes
-    const numSeasons = episodesData.length;
-    const numEpisodes = episodesData.reduce((total, episode) => total + episode.number, 0);
-
+    const seasons = episodesData.map((episode) => episode.season);
+    const numSeasons = Math.max(...seasons);
+    const numEpisodes = episodesData.length;
+    const imageSrc = await preloadImage(showData.image.original);
     // save all data in an object
     const showObj = {
-      image: showData.image.original,
+      image: imageSrc,
       title: showData.name,
+      network: showData.network?.name || showData.webChannel?.name || 'N/A',
+      rating: showData.rating?.average || 'N/A',
       seasons: numSeasons,
       episodes: numEpisodes,
       genres: showData.genres.join(', '),
       status: showData.status,
       summary: showData.summary,
     }
+
     return { data: showObj, error: null };
   }
   catch (error) {
@@ -43,3 +54,20 @@ export const getShowById = async (tvShowId) => {
     return { data: null, error: error};
   }
 };
+
+export const searchShows = async (query) => {
+  try {
+    const response = await fetch(
+      `https://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`
+    )
+    if (!response.ok){
+      throw new Error(`Search failed: ${response.status}`)
+    }
+    
+    const data = await response.json()
+    return { data, error: null }
+  } catch (error) {
+    console.warn('Error searching for shows:', error.message)
+    return { data: null, error }
+  }
+}
