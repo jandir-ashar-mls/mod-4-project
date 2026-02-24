@@ -7,11 +7,24 @@
     <link rel="stylesheet" href="./src/style.css">
   </head>
   <body>
+  <h1>Episodic</h1>
 
     <section id="search">
       <h2>Search Shows</h2>
+      <div id="top-pick">
+        <h3>Our Top Picks</h3>
+        <div id="top-pick-card">
+          <img id="top-pick-image" alt="" />
+          <div class="top-pick-info">
+            <p id="top-pick-title"></p>
+            <p id="top-pick-rating"></p>
+          </div>
+        </div>
+        <button id="refresh-pick" type="button">Refresh</button>
+      </div>
 
       <form id="search-form">
+        
         <div class="form-group">
         <label for="search-input">Keyword</label>
         <input
@@ -26,7 +39,6 @@
     </section>
 
     <section id="TV-show-collection">
-      <h1>Episodic</h1>
       <ul id="shows-list"></ul>
     </section>
     <!-- Modal Section: single item details-->

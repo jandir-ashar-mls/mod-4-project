@@ -137,6 +137,43 @@ html:has(#show-details[open]) {
     margin-bottom: 1.5rem;
 }
 
+#top-picks {
+    margin-bottom: 2rem;
+}
+
+#top-pick-card {
+    display: flex;
+    gap: 1.5rem;
+    background:#ff8c00;
+    border-radius: 12px;
+    padding: 1rem;
+    min-height: 180px;
+    align-items: center;
+}
+
+#top-pick-image {
+    width: 130px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.top-pick-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#top-pick-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+#top-pick-rating {
+    opacity: 0.8;
+}
+
 #search h2 {
     font-size: 1rem;
     margin-bottom: 0.5rem;
@@ -145,7 +182,18 @@ html:has(#show-details[open]) {
 
 #search-form {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.form-group{
+    flex: 1;
+}
+
+input {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 6px;
 }
 
 #search-form input {

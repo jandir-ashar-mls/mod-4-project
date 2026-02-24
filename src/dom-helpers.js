@@ -51,3 +51,16 @@ export const renderSingleShowDetails = (tvShow) => {
   showStatus.textContent = tvShow.status;
   showSummary.innerHTML = tvShow.summary;
 };
+
+export const renderTopPick = (show) => {
+  const topPickImage = document.querySelector('#top-pick-image')
+  const topPickTitle = document.querySelector('#top-pick-title')
+  const topPickRating = document.querySelector('#top-pick-rating')
+
+  if (!show) return
+
+  topPickImage.src = show.image?.medium || ''
+  topPickImage.alt = show.name || 'Top pick'
+  topPickTitle.textContent = show.name || 'Untitled'
+  topPickRating.textContent = `⭐ ${show.rating?.average ?? 'N/A'}`
+};
