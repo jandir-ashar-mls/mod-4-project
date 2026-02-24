@@ -137,6 +137,30 @@ html:has(#show-details[open]) {
     margin-bottom: 1.5rem;
 }
 
+#reset-search {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--accent-color);
+  color: #0f172a;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#reset-search:hover {
+  opacity: 0.9;
+}
+
+#reset-search:focus {
+  outline: 2px solid var(--muted);
+  outline-offset: 2px;
+}
+
 #top-picks {
     margin-bottom: 2rem;
 }
@@ -186,6 +210,34 @@ html:has(#show-details[open]) {
     align-items: flex-end;
 }
 
+.button-primary {
+  height: 42px;
+  padding: 0 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--accent-color);
+  color: #0f172a;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+
+.button-primary:hover {
+  opacity: 0.9;
+}
+
+.button-primary:active {
+  transform: scale(0.97)
+}
+
+.button-primary:focus {
+  outline: 2px solid var(--muted);
+  outline-offset: 2px;
+}
+
 .form-group{
     flex: 1;
 }
@@ -206,15 +258,6 @@ input {
 
 #search-form input:focus {
   outline: 2px solid var(--accent-color);
-}
-
-#search-form button {
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  border: none;
-  background-color: var(--accent-color);
-  color: #0f172a;
-  font-weight: bold;
 }
 
 .form-group {

@@ -7,8 +7,9 @@ const searchInput = document.querySelector('#search-input')
 const showsList = document.querySelector('#shows-list');
 const closeButton = document.querySelector('#show-close-details');
 const showDetails = document.querySelector('#show-details');
-const refreshPickButton = document.querySelector('#refresh-pick')
+const refreshPickButton = document.querySelector('#refresh-pick');
 const showContent = document.querySelector('#show-content');
+const resetSearchButton = document.querySelector('#reset-search')
 
 let cachedShows = []
 
@@ -45,6 +46,12 @@ searchForm.addEventListener('submit', async (event) => {
 
   renderShowsCollection(data)
   searchForm.reset()
+})
+
+resetSearchButton.addEventListener('click', () => {
+  searchForm.reset()
+  renderShowsCollection(cachedShows)
+  window.scrollTo({ top: 0, behavior: 'smooth'})
 })
 
 showsList.addEventListener('click', async (event) => {
