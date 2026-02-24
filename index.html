@@ -4,15 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Episodic</title>
-    <script type="module" crossorigin src="/mod-4-project/assets/index-kyO426fH.js"></script>
-    <link rel="stylesheet" crossorigin href="/mod-4-project/assets/index-Cfbb8X_u.css">
+    <script type="module" crossorigin src="/mod-4-project/assets/index-DoMpZ4fE.js"></script>
+    <link rel="stylesheet" crossorigin href="/mod-4-project/assets/index-CQYCS0sZ.css">
   </head>
   <body>
-  <h1>Episodic</h1>
+  <header role="banner">
+    <h1>Episodic</h1>
+  </header>
 
-    <section id="search">
-      <h2>Search Shows</h2>
-      <div id="top-pick">
+  <main aria-label="main content">
+    <!-- Search Bar -->
+    <section id="search" aria-labelledby="search-heading">
+      <h2 id="search-heading">Search Shows</h2>
+      <div id="top-pick" aria-label="random top tv show pick">
         <h3>Our Top Picks</h3>
         <div id="top-pick-card">
           <img id="top-pick-image" alt="" />
@@ -21,29 +25,31 @@
             <p id="top-pick-rating"></p>
           </div>
         </div>
-        <button id="refresh-pick" type="button">Refresh</button>
+        <button id="refresh-pick" type="button" aria-label="get a new show pick">Refresh</button>
       </div>
-
+      
       <form id="search-form">
         
         <div class="form-group">
-        <label for="search-input">Keyword</label>
-        <input
-        type="text"
-        id="search-input"
-        name="query"
-        required
-        />
+          <label for="search-input">Keyword</label>
+          <input
+          type="text"
+          id="search-input"
+          name="query"
+          required
+          />
         </div>
         <button type="submit">Search</button>
       </form>
     </section>
-
-    <section id="TV-show-collection">
-      <ul id="shows-list"></ul>
+    
+    <section id="TV-show-collection" aria-labelledby="shows-heading">
+      <h2 id="shows-heading">Shows (<span id="shows-count">0</span>)</h2>
+      <ul id="shows-list" aria-label="tv shows collection"></ul>
     </section>
+
     <!-- Modal Section: single item details-->
-    <dialog id="show-details">
+    <dialog id="show-details" aria-label="single tv show details" aria-live="polite">
       <div id="show-content">
         <div id="show-close-details-wrapper"><button id="show-close-details" aria-label="close modal"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button></div>
         <!-- This will facilitate the layout later on -->
@@ -64,5 +70,10 @@
         <p id="show-summary"></p>
       </div>
     </dialog>
+  </main>
+
+  <footer role="contentinfo">
+    <p id="built-by">Built by Ashar Zarrar & Jandir Gregorio · 2026</p>
+  </footer>
   </body>
 </html>
