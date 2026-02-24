@@ -50,21 +50,15 @@ export const renderSingleShowDetails = (tvShow) => {
   showSummary.textContent = tvShow.summary;
 }
 
-export const renderTopPick = (shows) => {
-  const topPickImage = document.querySelector('#top-pick-image');
-const topPickTitle = document.querySelector('#top-pick-title')
-const topPickRating = document.querySelector('#top-pick-rating')
-  const topRated = shows.filter(
-    show => show.rating?.average >= 8.5
-  )
+export const renderTopPick = (show) => {
+  const topPickImage = document.querySelector('#top-pick-image')
+  const topPickTitle = document.querySelector('#top-pick-title')
+  const topPickRating = document.querySelector('#top-pick-rating')
 
-  if (topRated.length === 0) return;
-
-  const randomIndex = Math.floor(Math.random() * topRated.length)
-  const show = topRated[randomIndex]
+  if (!show) return
 
   topPickImage.src = show.image?.medium || ''
-  topPickImage.alt = show.name
-  topPickTitle.textContent = show.name
-  topPickRating.textContent = `⭐ ${show.rating.average}`
+  topPickImage.alt = show.name || 'Top pick'
+  topPickTitle.textContent = show.name || 'Untitled'
+  topPickRating.textContent = `⭐ ${show.rating?.average ?? 'N/A'}`
 }
