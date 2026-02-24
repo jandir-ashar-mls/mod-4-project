@@ -1,5 +1,7 @@
 export const renderShowsCollection = (shows) => {
   const ul = document.querySelector('#shows-list')
+  const count = document.querySelector('#shows-count');
+  count.textContent = shows.length;
   while (ul.firstChild) {
     ul.removeChild(ul.firstChild)
   }

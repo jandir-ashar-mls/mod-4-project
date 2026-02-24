@@ -222,7 +222,7 @@ input {
     flex-direction: column;
 }
 
-#TV-show-collection h1 {
+#shows-heading {
     text-align: center;
     font-size: 1.75rem;
     margin-bottom: 1rem;
@@ -258,6 +258,13 @@ input {
     margin-top: 0.5rem;
     font-size: 0.9rem;
     text-align: center;
+}
+
+#built-by {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--surface);
+  text-align: center;
 }
 
 @keyframes fadeIn {
