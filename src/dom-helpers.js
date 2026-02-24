@@ -10,9 +10,9 @@ export const renderShowsCollection = (shows) => {
     const li = document.createElement('li')
     li.dataset.id = show.id
 
-    if (show.image && show.image.medium) {
+    if (show.image && show.image.original) {
       const img = document.createElement('img')
-      img.src = show.image.medium
+      img.src = show.image.original
       img.alt = show.name
       li.appendChild(img)
     }
@@ -59,7 +59,7 @@ export const renderTopPick = (show) => {
 
   if (!show) return
 
-  topPickImage.src = show.image?.medium || ''
+  topPickImage.src = show.image?.original || ''
   topPickImage.alt = show.name || 'Top pick'
   topPickTitle.textContent = show.name || 'Untitled'
   topPickRating.textContent = `⭐ ${show.rating?.average ?? 'N/A'}`
