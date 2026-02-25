@@ -1,9 +1,9 @@
 :root {
   --font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   --text-color: #f8fafc;
-  --accent-color: #38bdf8;;
+  --accent-color: #4b4fb1;;
   --shadow-color: rgba(0, 0, 0, 0.2);
-  --background: #0f172a;
+  --background: #4b9cd2f8;
   --surface: #1e293b;
   --muted: #94a3b8;
 }
@@ -22,7 +22,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 0;
+  padding: 0.4rem 0;
 }
 
 .logo {
@@ -185,9 +185,12 @@ html:has(#show-details[open]) {
 }
 
 #top-pick-card {
+    max-width: 300px;
+    width: 100%;
+    margin: 0;
     display: flex;
     gap: 1.5rem;
-    background:#ff8c00;
+    background:#4b4fb1;
     border-radius: 12px;
     padding: 1rem;
     min-height: 180px;
@@ -332,17 +335,6 @@ input {
   body {
     max-width: 1100px;
     margin: 0 auto;
-  }
-
-  #search {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 1.5rem;
-    align-items: start;
-  }
-
-  #search h2 {
-    grid-column: 1 / -1;
   }
 
   #shows-list {

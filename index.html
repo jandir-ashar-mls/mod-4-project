@@ -5,29 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Episodic</title>
     <link rel="stylesheet" href="./src/style.css">
-    <link rel="icon" type="image/png" href="https://i.ibb.co/whLSNYfV/episodic-tiny-logo.png">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/v4BqZsjS/Episodic-Tiny-Logo.png">
   </head>
   <body>
   <header role="banner" class="site-header">
-    <img src="https://i.ibb.co/7xkVgbYx/episodic-logo.png" alt="Episodic logo" class="logo">
+    <img src="https://i.ibb.co/zhFgw26K/Episodic-Logo.png" alt="Episodic logo" class="logo">
   </header>
 
   <main aria-label="main content">
     <!-- Search Bar -->
     <section id="search" aria-labelledby="search-heading">
       <h2 id="search-heading">Search Shows</h2>
-      <div id="top-pick" aria-label="random top tv show pick">
-        <h3>Our Top Picks</h3>
-        <div id="top-pick-card">
-          <img id="top-pick-image" alt="" />
-          <div class="top-pick-info">
-            <p id="top-pick-title"></p>
-            <p id="top-pick-rating"></p>
-          </div>
-        </div>
-        <button id="refresh-pick" type="button" class="button-primary" aria-label="get a new show pick">Refresh</button>
-      </div>
-      
       <form id="search-form">
         
         <div class="form-group">
@@ -43,6 +31,22 @@
         <button type="button" id="reset-search" class="button-primary" aria-label="reset search and show all" title="Reset">↻</button>
         <button type="button" class="button-primary" id="favorites-btn" data-view="all">Favorites</button>
       </form>
+      <div id="top-pick" aria-label="random top tv show pick">
+        <h3>Our Top Picks</h3>
+        <div id="top-pick-card">
+          <img id="top-pick-image" alt="" />
+          <div class="top-pick-info">
+            <p id="top-pick-title"></p>
+            <p id="top-pick-rating"></p>
+          </div>
+        </div>
+        <button id="refresh-pick" type="button" class="button-primary" aria-label="get a new show pick">Refresh</button>
+      </div>
+      
+      
+      <div id="favorite-btn-wrapper">
+          <button type="button" class="button-primary" id="favorites-btn" data-view="all">Favorites</button>
+      </div>
     </section>
     
     <section id="TV-show-collection" aria-labelledby="shows-heading">
