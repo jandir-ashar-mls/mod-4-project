@@ -405,10 +405,6 @@ input {
   color: gold;
   background-color: rbga(255, 215, 0, 0,14);
 }
-#favorite-btn-wrapper {
-  display: flex;
-  justify-content: center;
-}
 
 @keyframes fadeIn {
   from {
