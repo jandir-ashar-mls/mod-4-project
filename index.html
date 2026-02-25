@@ -4,30 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Episodic</title>
-    <script type="module" crossorigin src="/mod-4-project/assets/index-B7DIxyR0.js"></script>
-    <link rel="stylesheet" crossorigin href="/mod-4-project/assets/index-BSVDJpkN.css">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/v4BqZsjS/Episodic-Tiny-Logo.png">
+    <script type="module" crossorigin src="/mod-4-project/assets/index-D0brWS0w.js"></script>
+    <link rel="stylesheet" crossorigin href="/mod-4-project/assets/index-B23Vi31K.css">
   </head>
   <body>
-  <header role="banner">
-    <h1>Episodic</h1>
+  <header role="banner" class="site-header">
+    <img src="https://i.ibb.co/zhFgw26K/Episodic-Logo.png" alt="Episodic logo" class="logo">
   </header>
 
   <main aria-label="main content">
     <!-- Search Bar -->
     <section id="search" aria-labelledby="search-heading">
       <h2 id="search-heading">Search Shows</h2>
-      <div id="top-pick" aria-label="random top tv show pick">
-        <h3>Our Top Picks</h3>
-        <div id="top-pick-card">
-          <img id="top-pick-image" alt="" />
-          <div class="top-pick-info">
-            <p id="top-pick-title"></p>
-            <p id="top-pick-rating"></p>
-          </div>
-        </div>
-        <button id="refresh-pick" type="button" aria-label="get a new show pick">Refresh</button>
-      </div>
-      
       <form id="search-form">
         
         <div class="form-group">
@@ -41,7 +30,19 @@
         </div>
         <button type="submit" class="button-primary">Search</button>
         <button type="button" id="reset-search" class="button-primary" aria-label="reset search and show all" title="Reset">↻</button>
+        <button type="button" class="button-primary" id="favorites-btn" data-view="all">Favorites</button>
       </form>
+      <div id="top-pick" aria-label="random top tv show pick">
+        <h3>Our Top Picks</h3>
+        <div id="top-pick-card">
+          <img id="top-pick-image" alt="" />
+          <div class="top-pick-info">
+            <p id="top-pick-title"></p>
+            <p id="top-pick-rating"></p>
+          </div>
+        </div>
+        <button id="refresh-pick" type="button" class="button-primary" aria-label="get a new show pick">Refresh</button>
+      </div>
     </section>
     
     <section id="TV-show-collection" aria-labelledby="shows-heading">
@@ -52,7 +53,10 @@
     <!-- Modal Section: single item details-->
     <dialog id="show-details" aria-label="single tv show details" aria-live="polite">
       <div id="show-content">
-        <div id="show-close-details-wrapper"><button id="show-close-details" aria-label="close modal"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button></div>
+        <div id="show-close-details-wrapper">
+          <button id="show-favorite" class="favorite-btn" aria-label="add to favorites" data-favorited="false">★</button>
+          <button id="show-close-details" aria-label="close modal"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button>
+        </div>
         <!-- This will facilitate the layout later on -->
         <div id="info-content">
           <figure id="image-content">
