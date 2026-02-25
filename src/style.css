@@ -13,6 +13,7 @@ body {
   color: var(--text-color);
   font-family: var(--font-family);
   padding: 1rem;
+  line-height: 1.5;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -79,11 +80,13 @@ html:has(#show-details[open]) {
   box-shadow: 0 2px 4px var(--shadow-color);
   padding: 20px;
   overflow: auto;
+  color: var(--text-color);
 }
 
 #show-close-details-wrapper {
   display: flex;
   justify-content: flex-end;
+  gap: 1rem;
   margin-bottom: 10px;
 }
 
@@ -95,7 +98,7 @@ html:has(#show-details[open]) {
   border: 1px solid transparent;
 }
 
-#show-close-details:focus {
+#show-close-details:focus, .favorite-btn:focus {
   outline: none;
 }
 
@@ -112,6 +115,7 @@ html:has(#show-details[open]) {
   display: flex;
   flex-direction: column;
   max-width: 250px;
+  gap: .5rem;
 }
 
 #show-image {
@@ -252,6 +256,9 @@ html:has(#show-details[open]) {
   outline: 2px solid var(--muted);
   outline-offset: 2px;
 }
+#favorites-btn {
+  margin-top: 1rem;
+}
 
 .form-group{
     flex: 1;
@@ -383,6 +390,24 @@ input {
   padding-top: 1rem;
   border-top: 1px solid var(--surface);
   text-align: center;
+}
+
+.favorite-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: grey;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.favorite-btn[data-favorited="true"] {
+  color: gold;
+  background-color: rbga(255, 215, 0, 0,14);
+}
+#favorite-btn-wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes fadeIn {

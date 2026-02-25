@@ -42,6 +42,9 @@
         <button type="submit" class="button-primary">Search</button>
         <button type="button" id="reset-search" class="button-primary" aria-label="reset search and show all" title="Reset">↻</button>
       </form>
+      <div id="favorite-btn-wrapper">
+          <button type="button" class="button-primary" id="favorites-btn" data-view="all">Favorites</button>
+      </div>
     </section>
     
     <section id="TV-show-collection" aria-labelledby="shows-heading">
@@ -52,7 +55,10 @@
     <!-- Modal Section: single item details-->
     <dialog id="show-details" aria-label="single tv show details" aria-live="polite">
       <div id="show-content">
-        <div id="show-close-details-wrapper"><button id="show-close-details" aria-label="close modal"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button></div>
+        <div id="show-close-details-wrapper">
+          <button id="show-favorite" class="favorite-btn" aria-label="add to favorites" data-favorited="false">★</button>
+          <button id="show-close-details" aria-label="close modal"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button>
+        </div>
         <!-- This will facilitate the layout later on -->
         <div id="info-content">
           <figure id="image-content">
