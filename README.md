@@ -1,7 +1,7 @@
 # Episodic
 
 ## What's Episodic?
-Episodic: a web application built using the TVMaze API for shows fanatatics to explore and save their favorite shows.
+Episodic: a web application built using the TVMaze API for show fanatatics to explore and save their favorite shows.
 
 ## API endpoints
 
@@ -18,11 +18,11 @@ We used four different endpoints:
 - Users will be able to see a search section as well as a grid of different TV shows when they load the page.
 - Users will be able to search for a specific TV show given a keyword (query).
 - Users will be able to do a new search and reset it.
-- Users will be able to click on a TV show to see more details about it and be able to click on a button to go back.
+- Users will be able to click on a TV show to see more details about it and be able to click on a close button to go back.
 
 ### Stretch Features
 
-- Users will be able to favorite/”add to watched” a TV show using localStorage
+- Users will be able to add a show to their **favorites** list using localStorage
 - Users will be able to get a new random pick with shows of rating 8 or more.
 
 ## Setup instructions
@@ -32,9 +32,6 @@ When you clone this repo:
 1. Run `npm install` to install necessary dependencies.
 
 2. Run `npm run dev`
-
-## Future Improvements
-
 
 ## Image Walkthrough
 
