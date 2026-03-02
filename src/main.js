@@ -21,7 +21,7 @@ const getRandomTopRatedShow = (shows) => {
   const topRated = shows.filter(s => s.rating?.average >= 8.0)
   if (topRated.length === 0) return null
   return topRated[Math.floor(Math.random() * topRated.length)]
-}
+};
 
 const loadShows = async () => {
   const { data, error } = await getAllShows()
@@ -33,14 +33,14 @@ const loadShows = async () => {
   
   const pick = getRandomTopRatedShow(cachedShows)
   if (pick) renderTopPick(pick)
-}
+};
 
 loadShows()
 
 refreshPickButton.addEventListener('click', () => {
   const pick = getRandomTopRatedShow(cachedShows)
   if (pick) renderTopPick(pick)
-})
+});
 
 searchForm.addEventListener('submit', async (event) => {
   event.preventDefault()
@@ -52,7 +52,7 @@ searchForm.addEventListener('submit', async (event) => {
   currentShows = data;
   renderShowsCollection(data)
   searchForm.reset()
-})
+});
 
 resetSearchButton.addEventListener('click', () => {
   searchForm.reset()
@@ -60,7 +60,12 @@ resetSearchButton.addEventListener('click', () => {
   currentShows = cachedShows;
   renderShowsCollection(cachedShows)
   window.scrollTo({ top: 0, behavior: 'smooth'})
-})
+});
+
+
+const findShow = (showId) => {
+  return currentShows.map((shape) => shape.show ?? shape).find((shape) => shape.id === showId) || getFavorites().find((shape) => shape.id === showId);
+};
 
 showsList.addEventListener('click', async (event) => {
 
@@ -68,13 +73,17 @@ showsList.addEventListener('click', async (event) => {
   if (favoriteBtn) {
     const li = favoriteBtn.closest('li');
     const showId = Number(li.dataset.id);
-    const show = currentShows.map((s) => s.show ?? s).find(s => s.id === showId)
-      || getFavorites().find(s => s.id === showId);
+    const show = findShow(showId);
     if (!show) return;
 
     toggleFavorite(show);
     const isFavorited = favoriteBtn.dataset.favorited === 'true';
     favoriteBtn.dataset.favorited = !isFavorited;
+
+    if (viewingFavorites) {
+      currentShows = getFavorites();
+      renderFavorites();
+    }
     return;
   }
 
@@ -117,8 +126,7 @@ favoritesButton.addEventListener('click', () => {
 showFavoriteBtn.addEventListener('click', () => {
   const isFavorited = showFavoriteBtn.dataset.favorited === 'true';
   const showId = Number(showDetails.dataset.currentId);
-  const show = currentShows.map((show) => show.show ?? show).find((show) => show.id === showId)
-    || getFavorites().find((show)=> show.id === showId);
+  const show = findShow(showId);
   if (!show) return;
 
   toggleFavorite(show);
