@@ -134,7 +134,7 @@ topPickCard.addEventListener('click', async () => {
   if(!showId) return;
 
   const { data, error } = await getShowById(showId);
-
+  if (error) return;
   renderSingleShowDetails(data);
   showDetails.dataset.currentId = showId;
   showDetails.showModal();
