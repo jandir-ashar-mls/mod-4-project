@@ -12,6 +12,7 @@ const showContent = document.querySelector('#show-content');
 const resetSearchButton = document.querySelector('#reset-search')
 const favoritesButton = document.querySelector('#favorites-btn');
 const showFavoriteBtn = document.querySelector('#show-favorite');
+const topPickCard = document.querySelector('#top-pick-card');
 
 let cachedShows = []
 let currentShows = [];
@@ -126,3 +127,15 @@ showFavoriteBtn.addEventListener('click', () => {
 
   viewingFavorites ? renderFavorites() : renderShowsCollection(currentShows);
 });
+
+topPickCard.addEventListener('click', async () => {
+  const showId = topPickCard.dataset.id;
+
+  if(!showId) return;
+
+  const { data, error } = await getShowById(showId);
+
+  renderSingleShowDetails(data);
+  showDetails.dataset.currentId = showId;
+  showDetails.showModal();
+})

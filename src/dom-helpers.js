@@ -69,12 +69,14 @@ export const renderSingleShowDetails = (tvShow) => {
 };
 
 export const renderTopPick = (show) => {
-  const topPickImage = document.querySelector('#top-pick-image')
-  const topPickTitle = document.querySelector('#top-pick-title')
-  const topPickRating = document.querySelector('#top-pick-rating')
+  const topPickImage = document.querySelector('#top-pick-image');
+  const topPickTitle = document.querySelector('#top-pick-title');
+  const topPickRating = document.querySelector('#top-pick-rating');
+  const topPickCard = document.querySelector('#top-pick-card');
 
   if (!show) return
 
+  topPickCard.dataset.id = show.id;
   topPickImage.src = show.image?.original || ''
   topPickImage.alt = show.name || 'Top pick'
   topPickTitle.textContent = show.name || 'Untitled'
