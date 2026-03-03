@@ -8,6 +8,7 @@ export const renderShowsCollection = (shows) => {
 
   const favorites = getFavorites();
 
+  let filteredShows = 0;
   shows.forEach(item => {
     const show = item.show ? item.show : item
     if(!show.image?.original || !show.image?.medium) return;
@@ -38,7 +39,9 @@ export const renderShowsCollection = (shows) => {
     li.append(favoriteBtn);
 
     ul.appendChild(li)
-  })
+    filteredShows++;
+  });
+  count.textContent = filteredShows;
 }
 
 export const renderSingleShowDetails = (tvShow) => {
@@ -108,4 +111,4 @@ export const toggleFavorite= (show) => {
 export const renderFavorites = () => {
   const favorites = getFavorites();
   renderShowsCollection(favorites);
-}
+;}
