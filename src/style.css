@@ -260,7 +260,7 @@ html:has(#show-details[open]) {
   outline-offset: 2px;
 }
 #favorites-btn {
-  margin-top: 1rem;
+  margin: 1rem 0 .5rem 0;
 }
 
 .form-group{
